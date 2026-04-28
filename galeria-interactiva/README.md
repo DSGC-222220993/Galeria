@@ -1,59 +1,50 @@
-# GaleriaInteractiva
+# Galeria Interactiva
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.2.7.
+Esta es una aplicación Angular sencilla que muestra fotos en un carrusel horizontal. Permite agregar nuevas imágenes por URL, dar likes y eliminar fotos. Los datos se guardan en localStorage, por lo que las fotos agregadas permanecen tras recargar y las eliminadas desaparecen permanentemente.
 
-## Development server
+## Funcionalidades
 
-To start a local development server, run:
+- Agregar nueva foto por título y URL
+- Agregar con Enter o con botón
+- Contador de likes y botón para sumar
+- Eliminar foto
+- Mensaje de error si falta título o URL
+- Mensaje de confirmación al agregar
+- Persistencia en localStorage para mantener cambios al recargar
+- Carrusel navegable con flechas
 
-```bash
-ng serve
-```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+## Estructura Técnica
 
-## Code scaffolding
+- Desarrollada con Angular standalone components
+- Uso de FormsModule para binding de formulario y entrada con Enter
+- localStorage para persistir fotos, likes y eliminaciones entre recargas
+- Carrusel horizontal con navegación por flechas y tarjetas centradas
+- Validación de formulario con mensaje de error y confirmación de éxito
+- Diseño responsivo con CSS moderno, tarjetas con efecto hover y scroll oculto
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+##  Cómo Correr en Otro Dispositivo (Primera Vez)
 
-```bash
-ng generate component component-name
-```
+1. Clonar o copiar el proyecto
+   cd galeria-interactiva
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+2. Instalar dependencias
+   npm install
 
-```bash
-ng generate --help
-```
+3. Iniciar el servidor de desarrollo
+   ng serve
 
-## Building
+4. Abrir en el navegador
+    Local: http://localhost:4200/
+    Desde otro dispositivo en la red: http://<IP-DE-TU-PC>:4200/
 
-To build the project run:
+5. Usar la aplicación
+    Explora la galeria
+    Reacciona a las imagenes
+    Agrega una foto nueva
 
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+## Notas Importantes
+- No hay backend; las fotos se guardan solo en el navegador (localStorage)
+- Solo se aceptan URLs de imagen válidas; no hay validación de formato avanzado
+- La galería se centra con una imagen cuando queda sola
+- La navegación del carrusel es por flechas, no por barra de desplazamiento visible
