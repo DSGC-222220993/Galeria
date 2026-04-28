@@ -1,0 +1,34 @@
+<header>
+  <p>NOMBRE DE LA EMPRESA</p>
+  <h1>Galería Interactiva</h1>
+  <p>Total Likes: <strong>{{ totalLikes }}</strong></p>
+</header>
+
+<section class="form-container">
+  <input [(ngModel)]="nuevoTitulo" placeholder="Título de la foto" (keyup.enter)="agregarFoto()">
+  <input [(ngModel)]="nuevaUrl" placeholder="URL de la imagen" (keyup.enter)="agregarFoto()">
+  <button class="add-btn" (click)="agregarFoto()">AGREGAR</button>
+  <p class="error-message" *ngIf="mostrarError">Los campos no pueden estar vacíos</p>
+  <p class="success-message" *ngIf="mostrarSuccess">{{ successMessage }}</p>
+</section>
+
+<main class="gallery-carousel">
+  <button class="carousel-btn prev" (click)="scrollCarousel(-1)" aria-label="Anterior">‹</button>
+  <div class="carousel-track" [class.single]="fotos.length === 1">
+    <div class="photo-card" *ngFor="let foto of fotos">
+      <img [src]="foto.url" [alt]="foto.titulo">
+      <div class="photo-info">
+        <h3>{{ foto.titulo }}</h3>
+        <div class="actions">
+          <button class="like-btn" (click)="darLike(foto.id)">
+            ❤️ {{ foto.likes }}
+          </button>
+          <button class="delete-btn" (click)="eliminarFoto(foto.id)">
+            Eliminar
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <button class="carousel-btn next" (click)="scrollCarousel(1)" aria-label="Siguiente">›</button>
+</main>

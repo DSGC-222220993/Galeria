@@ -1,0 +1,209 @@
+:host {
+  display: block;
+  font-family: 'Segoe UI', serif;
+  background-color: #f9f7f2; /* Color crema suave de fondo */
+  color: #333;
+  padding: 20px;
+}
+
+header {
+  text-align: center;
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 40px;
+  padding-bottom: 20px;
+}
+
+h1 { text-transform: uppercase; letter-spacing: 5px; }
+
+/* Formulario */
+.form-container {
+  max-width: 600px;
+  margin: 0 auto 40px;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+input {
+  flex: 1;
+  min-width: 150px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  outline: none;
+}
+
+button.add-btn {
+  background: #000;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  align-self: center;
+}
+
+.error-message {
+  color: #e74c3c;
+  font-size: 0.85rem;
+  margin-top: 10px;
+  width: 100%;
+  text-align: center;
+  font-weight: 600;
+}
+
+.success-message {
+  color: #2d862d;
+  font-size: 0.85rem;
+  margin-top: 10px;
+  width: 100%;
+  text-align: center;
+  font-weight: 600;
+}
+
+/* Carrusel de fotos */
+.gallery-carousel {
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px 0;
+}
+
+.carousel-track {
+  display: flex;
+  gap: 20px;
+  overflow-x: hidden;
+  scroll-snap-type: x mandatory;
+  padding-bottom: 20px;
+  scroll-behavior: smooth;
+  justify-content: flex-start;
+  touch-action: none;
+}
+
+.carousel-track.single {
+  justify-content: center;
+}
+
+.carousel-track::-webkit-scrollbar {
+  display: none;
+}
+
+.carousel-track {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.photo-card {
+  flex: 0 0 320px;
+  min-width: 320px;
+  background: white;
+  padding: 15px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+  border-radius: 24px;
+  transition: transform 0.35s ease, opacity 0.35s ease;
+  scroll-snap-align: center;
+  position: relative;
+  transform: perspective(1200px) rotateY(-8deg);
+  opacity: 0.85;
+}
+
+.photo-card:hover {
+  transform: perspective(1200px) rotateY(0deg) scale(1.03);
+  opacity: 1;
+}
+
+.photo-card img {
+  width: 100%;
+  height: 360px;
+  object-fit: cover;
+  display: block;
+  border-radius: 18px;
+}
+
+.photo-info {
+  margin-top: 15px;
+  text-align: center;
+}
+
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 46px;
+  height: 46px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  transition: background 0.25s ease;
+}
+
+.carousel-btn:hover {
+  background: rgba(0, 0, 0, 1);
+}
+
+.carousel-btn.prev {
+  left: -10px;
+}
+
+.carousel-btn.next {
+  right: -10px;
+}
+
+@media (max-width: 900px) {
+  .photo-card {
+    flex: 0 0 260px;
+    min-width: 260px;
+  }
+
+  .carousel-btn.prev,
+  .carousel-btn.next {
+    width: 38px;
+    height: 38px;
+  }
+}
+
+@media (max-width: 640px) {
+  .gallery-carousel {
+    padding: 10px 0;
+  }
+
+  .carousel-btn {
+    display: none;
+  }
+
+  .photo-card {
+    min-width: 260px;
+    flex: 0 0 260px;
+  }
+}
+
+.photo-info h3 {
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  letter-spacing: 2px;
+}
+
+/* Mensaje de Error */
+.error-message {
+  color: #e74c3c;
+  font-size: 0.85rem;
+  margin-top: 10px;
+  text-align: center;
+  font-weight: 600;
+}
+
+.actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.like-btn { cursor: pointer; border: none; background: none; font-size: 1.2rem; }
+.delete-btn { color: #ff4d4d; border: none; background: none; cursor: pointer; }
