@@ -48,3 +48,7 @@ Esta es una aplicación Angular sencilla que muestra fotos en un carrusel horizo
 - Solo se aceptan URLs de imagen válidas; no hay validación de formato avanzado
 - La galería se centra con una imagen cuando queda sola
 - La navegación del carrusel es por flechas, no por barra de desplazamiento visible
+  
+  <img width="1022" height="299" alt="image" src="https://github.com/user-attachments/assets/78f0cc18-b4a8-4985-ba97-17626dafa02d" />
+  <img width="1135" height="779" alt="image" src="https://github.com/user-attachments/assets/9268034b-c052-4361-9a61-db21f348aa56" />
+  <img width="1072" height="666" alt="image" src="https://github.com/user-attachments/assets/36351e44-25e9-4366-b9ba-0959b8dff168" />
