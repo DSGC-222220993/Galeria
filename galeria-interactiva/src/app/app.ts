@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms'; // Para el formulario
+import { FormsModule } from '@angular/forms';
 import { Foto } from './foto.model';
 
 @Component({
@@ -13,15 +13,15 @@ import { Foto } from './foto.model';
 export class AppComponent {
   private storageKey = 'galeria-interactiva-fotos';
 
-  // Lista inicial de fotos
   fotos: Foto[] = [];
 
-  // Variables para el formulario
   nuevoTitulo = '';
   nuevaUrl = '';
   mostrarError = false;
   mostrarSuccess = false;
   successMessage = '';
+  mostrarConfirmacion = false;
+  fotoAEliminar: number | null = null;
   private mensajeTimerId?: number;
 
   constructor() {
@@ -45,8 +45,8 @@ export class AppComponent {
 
   private getFotosIniciales(): Foto[] {
     return [
-      { id: 1, titulo: 'Music in the City', url: 'https://images.unsplash.com/photo-1511379938547-c1f69b13d835?w=400&h=500&fit=crop', likes: 0 },
-      { id: 2, titulo: 'Diseño', url: 'https://images.unsplash.com/photo-1561070791-2526d30994b5?w=400&h=500&fit=crop', likes: 5 }
+      { id: 1, titulo: 'Patrick witch star', url: 'https://i.pinimg.com/736x/b6/1b/bb/b61bbb4053b5ba3c1dd2927b38134723.jpg', likes: 6 },
+      { id: 2, titulo: 'Flores amarillas', url: 'https://i.pinimg.com/1200x/05/2d/5d/052d5db977fd926afbc97b4bf8edc47a.jpg', likes: 7 }
     ];
   }
 
@@ -54,7 +54,6 @@ export class AppComponent {
     localStorage.setItem(this.storageKey, JSON.stringify(this.fotos));
   }
 
-  // 1. Agregar Foto
   agregarFoto() {
     if (this.nuevoTitulo && this.nuevaUrl) {
       const nueva: Foto = {
@@ -101,7 +100,6 @@ export class AppComponent {
     }
   }
 
-  // 2. Dar Like
   darLike(id: number) {
     const foto = this.fotos.find(f => f.id === id);
     if (foto) {
@@ -110,10 +108,24 @@ export class AppComponent {
     }
   }
 
-  // 3. Eliminar
   eliminarFoto(id: number) {
-    this.fotos = this.fotos.filter(f => f.id !== id);
-    this.guardarFotos();
+    this.fotoAEliminar = id;
+    this.mostrarConfirmacion = true;
+  }
+
+  confirmarEliminacion() {
+    if (this.fotoAEliminar !== null) {
+      this.fotos = this.fotos.filter(f => f.id !== this.fotoAEliminar);
+      this.guardarFotos();
+      this.showSuccessMessage('Foto eliminada exitosamente');
+      this.mostrarConfirmacion = false;
+      this.fotoAEliminar = null;
+    }
+  }
+
+  cancelarEliminacion() {
+    this.mostrarConfirmacion = false;
+    this.fotoAEliminar = null;
   }
 
   scrollCarousel(direction: number) {
@@ -127,7 +139,6 @@ export class AppComponent {
     });
   }
 
-  // 4. Contador Total (Computed)
   get totalLikes() {
     return this.fotos.reduce((acc, foto) => acc + foto.likes, 0);
   }

@@ -31,4 +31,12 @@
     </div>
   </div>
   <button class="carousel-btn next" (click)="scrollCarousel(1)" aria-label="Siguiente">›</button>
+  
+  <div class="confirmation-dialog" *ngIf="mostrarConfirmacion">
+    <p>¿Estás seguro de que deseas eliminar esta foto?</p>
+    <div class="confirmation-buttons">
+      <button class="confirm-btn" (click)="confirmarEliminacion()">Aceptar</button>
+      <button class="cancel-btn" (click)="cancelarEliminacion()">Cancelar</button>
+    </div>
+  </div>
 </main>
